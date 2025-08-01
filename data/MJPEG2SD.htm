@@ -1288,7 +1288,7 @@
                   <div class="input-group" id="wifi-group">
                     <label for="ethernetOnly">Ethernet Only</label>
                     <div class="switch">
-                      <input id="ethernetOnly" type="checkbox">
+                      <input id="ethernetOnly" type="checkbox" class="configItem">
                       <label title="Use Ethernet only | Disable Wifi" class="slider" for="ethernetOnly"></label>
                     </div>
                   </div>
@@ -1745,6 +1745,9 @@
           // operation based on ID
           if (RCsliders(key, value)) return;
           if (key == "wifi") getConfig("0");
+          else if (key == "ethernetOnly") {
+            if (fromUser) sendControl(key, value);
+          }
           else if (key == "hostName") {
             document.title = value;
             if (fromUser) sendControl(key, value);
@@ -1810,7 +1813,11 @@
         } 
         else if (dest == CLASS) {
           // operations based on class
-          if (key.substring(0, 9) == "quick-nav") navigation(value); 
+          if (key.substring(0, 9) == "quick-nav") {
+            navigation(value);
+            // Load appropriate configuration when navigation items are clicked
+            if (value == "access-settings") getConfig("0");
+          }
           else if (key == "iconSize") {
             if (value == "saveImage") saveImage();
             else sizeView(value); 
