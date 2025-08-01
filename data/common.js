@@ -261,7 +261,11 @@
             if (elt) elt.textContent = value; 
             else if (eld) {if (eld.classList.contains('displayonly')) eld.innerHTML = value;} // display text 
             else if (eli != null) { // input fields
-              if (eli.type === 'checkbox') eli.checked = !!Number(value);
+              if (eli.type === 'checkbox') {
+                console.log('Updating checkbox:', key, 'with value:', value, 'current checked:', eli.checked);
+                eli.checked = !!Number(value);
+                console.log('Updated checkbox:', key, 'new checked state:', eli.checked);
+              }
               else if (eli.type === 'range') eli.setAttribute('value', value);
               else if (eli.type === 'option') eli.selected = true;
               else eli.value = value; 
@@ -532,7 +536,10 @@
                   processStatus(ID, e.id, value);
                 }
               }
-              else if (e.type === 'checkbox') processStatus(ID, e.id, e.checked ? 1 : 0);
+              else if (e.type === 'checkbox') {
+                console.log('Checkbox changed:', e.id, 'checked:', e.checked, 'value:', e.checked ? 1 : 0);
+                processStatus(ID, e.id, e.checked ? 1 : 0);
+              }
               else if (et === 'button' || et === 'file') processStatus(ID, e.id, 1);
               else if (et === 'radio') { if (e.checked) processStatus(ID, e.name, value); } 
               else if (et === 'range') processStatus(ID, e.id, e.parentElement.children.rangeVal.innerHTML); 
