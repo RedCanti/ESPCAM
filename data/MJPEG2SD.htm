@@ -2178,21 +2178,7 @@
           pathDir = filePath.substring(0, filePath.lastIndexOf("/"));
         }
         if (pathDir == "") $$('#sfile option:not(:first-child)').forEach(el => { el.remove()}); 
-        
-        // Debug: Log file selection details
-        console.log('File selected:', filePath);
-        console.log('File ends with .avi:', filePath.substr(-4) === '.avi');
-        console.log('Playback button active:', isActive(playbackButton));
-        console.log('Playback button disabled:', playbackButton.disabled);
-        
-        if (filePath.substr(-4) === '.avi' && !isActive(playbackButton)) {
-          console.log('Enabling playback button');
-          enable(playbackButton);
-        } else if (filePath.substr(-4) !== '.avi') {
-          console.log('Disabling playback button - not an .avi file');
-          disable(playbackButton);
-        }
-        
+        if (filePath.substr(-4) === '.avi' && !isActive(playbackButton)) enable(playbackButton);
         if (fromUser) getFiles(filePath);
         return false;
       }
