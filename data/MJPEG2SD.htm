@@ -1286,25 +1286,7 @@
                 <div class='addButtons'></div>
                 <div>
                   <div class="subheader">Network settings</div>
-                  <div class="input-group" id="wifi-group">
-                    <label for="ethernetOnly">Ethernet Only</label>
-                    <div class="switch">
-                      <input id="ethernetOnly" type="checkbox">
-                      <label title="Use Ethernet only | Disable Wifi" class="slider" for="ethernetOnly"></label>
-                    </div>
-                  </div>
-                  <div class="input-group" id="wifi-group">
-                    <label for="hostName">Host Name</label>
-                    <input id="hostName" name="hostName" length=32 placeholder="Host name">
-                  </div>
-                  <div class="input-group" id="wifi-group">
-                    <label for="ST_SSID">SSID</label>
-                    <input id="ST_SSID" name="ST_SSID" length=32 placeholder="Router SSID">
-                  </div>
-                  <div class="input-group" id="wifi-group">
-                    <label for="ST_Pass">Password</label>
-                    <input id="ST_Pass" name="ST_Pass" length=64 placeholder="Router password">
-                  </div>
+                  <div class="config-group" id="Cfg"></div>
                   <div class="input-group">
                       <label for="extIP">External&nbsp;IP</label>
                       <div id="extIP" class="displayonly">&nbsp;</div>
@@ -1811,7 +1793,11 @@
         } 
         else if (dest == CLASS) {
           // operations based on class
-          if (key.substring(0, 9) == "quick-nav") navigation(value); 
+          if (key.substring(0, 9) == "quick-nav") {
+            navigation(value);
+            // Load appropriate configuration when navigation items are clicked
+            if (value == "access-settings") getConfig("0");
+          }
           else if (key == "iconSize") {
             if (value == "saveImage") saveImage();
             else sizeView(value); 
