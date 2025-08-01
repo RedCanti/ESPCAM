@@ -2523,28 +2523,6 @@
         appInit();
       });
 
-      // Add test for ethernetOnly checkbox
-      function testEthernetOnlyCheckbox() {
-        const checkbox = document.getElementById('ethernetOnly');
-        if (checkbox) {
-          console.log('ethernetOnly checkbox found:', checkbox);
-          console.log('Current checked state:', checkbox.checked);
-          console.log('Current value:', checkbox.value);
-          
-          // Add a test event listener
-          checkbox.addEventListener('change', function(e) {
-            console.log('ethernetOnly checkbox changed:', e.target.checked);
-          });
-        } else {
-          console.log('ethernetOnly checkbox NOT found');
-        }
-      }
-
-      // Call the test function when page loads
-      document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(testEthernetOnlyCheckbox, 1000); // Wait 1 second for page to load
-      });
-
     </script>
   </body>
 </html>
