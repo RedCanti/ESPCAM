@@ -1285,87 +1285,8 @@
                 <label for="other-cb" class="nav-toggle">🔧&nbsp;&nbsp;Access Settings&nbsp;&nbsp;</label>
                 <div class='addButtons'></div>
                 <div>
-                  <div class="subheader">Network settings</div>
-                  <div class="config-group" id="Cfg"></div>
-                  <div class="input-group">
-                      <label for="extIP">External&nbsp;IP</label>
-                      <div id="extIP" class="displayonly">&nbsp;</div>
-                  </div>
-                  <br>
-                  <div class="subheader">Clock settings</div>
-                  <div class="input-group" id="time-group">
-                    <label for="timezone">Time Zone</label>
-                    <input id="timezone" name="timezone" length=64 placeholder="Time zone string">
-                  </div>
-                  <div class="input-group" id="time-group">
-                    <label for="regionSel">Select Region</label>
-                    <select id="regionSel" name="regionSel" class="selectField local">
-                      <option value="" selected>Loading...</option>
-                    </select>
-                  </div>
-                  <div class="input-group" id="time-group">
-                    <label for="timezoneSel">Select Location</label>
-                    <select id="timezoneSel" name="timezoneSel" class="selectField">
-                      <option value="" selected>Loading...</option>
-                    </select>
-                  </div>
-                  <br>
-                  <div class="subheader">FTP / HTTPS settings</div>
-                  <div class="input-group" id="ftp-group">
-                    <label for="fsServer">File Server</label>
-                    <input id="fsServer" name="fsServer" length=32 placeholder="File server name">
-                  </div>
-                  <div class="input-group" id="ftp-group">
-                    <label for="fsPort">FS port</label>
-                    <input id="fsPort" name="fsPport" length=6 placeholder="File server port">
-                  </div>
-                  <div class="input-group" id="ftp-group">
-                    <label for="ftpUser">FTP user name</label>
-                    <input id="ftpUser" name="ftpUser" length=32 placeholder="FTP user name">
-                  </div>
-                  <div class="input-group" id="ftp-group">
-                    <label for="FS_Pass">FS password</label>
-                    <input id="FS_Pass" name="FS_Pass" length=32 placeholder="File server password">
-                  </div>
-                  <div class="input-group" id="ftp-group">
-                    <label for="fsWd">FS root dir</label>
-                    <input id="fsWd" name="fsWd" length=64 placeholder="Working directory path">
-                  </div>
-                  <div class="input-group" id="ftp-group">
-                    <label for="fsUse">Upload method:</label>FTP&nbsp;
-                    <div class="switch">
-                      <input id="fsUse" type="checkbox">
-                      <label title="Upload file using FTP or HFS" class="slider" for="fsUse"></label>
-                    </div>&nbsp;HFS
-                  </div>
-                  <br>
-                  <div class="subheader">SMTP settings</div>
-                  <div class="input-group" id="smtp-group">
-                    <label for="smtp_server">SMTP server</label>
-                    <input id="smtp_server" name="smtp_server" length=32 placeholder="smtp server name">
-                  </div>
-                  <div class="input-group" id="smtp-group">
-                    <label for="smtp_port">SMTP port</label>
-                    <input id="smtp_port" name="smtp_port" length=6 placeholder="smtp port">
-                  </div>                          
-                  <div class="input-group" id="smtp-group">
-                    <label for="smtp_login">SMTP login</label>
-                    <input id="smtp_login" name="smtp_login" length=32 placeholder="smtp login email">
-                  </div>
-                  <div class="input-group" id="smtp-group">
-                    <label for="SMTP_Pass">SMTP password</label>
-                    <input id="SMTP_Pass" name="SMTP_Pass" length=32 placeholder="smtp password">
-                  </div>
-                  <div class="input-group" id="ftp-group">
-                    <label for="smtp_email">SMTP email</label>
-                    <input id="smtp_email" name="smtp_email" length=64 placeholder="smtp email to">
-                  </div>
-                  <br>
-                  <div class="subheader">Authentication settings</div>
-                  <div class="input-group" id="auth-group">
-                      <label for="Auth_Name">Web login</label>
-                      <input id="Auth_Name" name="Auth_Name" length=32 placeholder="Authentication user name">
-                  </div>
+                  <p class='config-group' id='Main012'></p>
+                </div>
                   <div class="input-group" id="auth-group">
                       <label for="Auth_Pass">Web password</label>
                       <input id="Auth_Pass" name="Auth_Pass" length=32 placeholder="Authentication password">
@@ -1793,11 +1714,7 @@
         } 
         else if (dest == CLASS) {
           // operations based on class
-          if (key.substring(0, 9) == "quick-nav") {
-            navigation(value);
-            // Load appropriate configuration when navigation items are clicked
-            if (value == "access-settings") getConfig("0");
-          }
+          if (key.substring(0, 9) == "quick-nav") navigation(value); 
           else if (key == "iconSize") {
             if (value == "saveImage") saveImage();
             else sizeView(value); 
