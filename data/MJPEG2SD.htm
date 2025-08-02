@@ -1291,13 +1291,6 @@
                 <div>
                   <div class="subheader">Network settings</div>
                   <div class="input-group" id="wifi-group">
-                    <label for="ethernetOnly">Ethernet Only</label>
-                    <div class="switch">
-                      <input id="ethernetOnly" type="checkbox" class="configItem">
-                      <label title="Use Ethernet only | Disable Wifi" class="slider" for="ethernetOnly"></label>
-                    </div>
-                  </div>
-                  <div class="input-group" id="wifi-group">
                     <label for="hostName">Host Name</label>
                     <input id="hostName" name="hostName" length=32 placeholder="Host name">
                   </div>
@@ -1750,9 +1743,6 @@
           // operation based on ID
           if (RCsliders(key, value)) return;
           if (key == "wifi") getConfig("0");
-          else if (key == "ethernetOnly") {
-            if (fromUser) sendControl(key, value);
-          }
           else if (key == "hostName") {
             document.title = value;
             if (fromUser) sendControl(key, value);
