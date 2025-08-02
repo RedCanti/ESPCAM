@@ -44,28 +44,10 @@
             doLoadStatus ? loadStatus("") : configStatus(false); 
             if (doRefreshTimer && refreshTimer == null) refreshStatus();
             if (doInitWebSocket) initWebSocket(0);
-            // Initialize ethernetOnly checkbox
-            initEthernetOnly();
           } catch (error) {
             showLog("Initialise -  " + error.message);
             alert("Initialise - " + error.message);
           } 
-        }
-
-        async function initEthernetOnly() {
-          // Get the current ethernetOnly setting from the server
-          try {
-            const response = await fetch(webServer + '/status?0');
-            if (response.ok) {
-              const data = await response.json();
-              const checkbox = document.getElementById('ethernetOnly');
-              if (checkbox && data.ethernetOnly !== undefined) {
-                checkbox.checked = data.ethernetOnly === 1;
-              }
-            }
-          } catch (error) {
-            console.log('Failed to initialize ethernetOnly checkbox:', error);
-          }
         }
 
         /*********** websocket functions ***********/
