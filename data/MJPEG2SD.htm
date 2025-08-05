@@ -1295,6 +1295,13 @@
                     <input id="hostName" name="hostName" length=32 placeholder="Host name">
                   </div>
                   <div class="input-group" id="wifi-group">
+                    <label for="NET_MODE">Network Interface:&nbsp;WiFi</label>
+                    <div class="switch">
+                      <input id="NET_MODE" type="checkbox">
+                      <label title="Select WiFi or Ethernet" class="slider" for="NET_MODE"></label>
+                    </div>&nbsp;Ethernet
+                  </div>
+                  <div class="input-group" id="wifi-group">
                     <label for="ST_SSID">SSID</label>
                     <input id="ST_SSID" name="ST_SSID" length=32 placeholder="Router SSID">
                   </div>
@@ -1305,20 +1312,6 @@
                   <div class="input-group">
                       <label for="extIP">External&nbsp;IP</label>
                       <div id="extIP" class="displayonly">&nbsp;</div>
-                  </div>
-                  <div class="input-group" id="network-group">
-                    <label for="ethernetOnly">Ethernet Only Mode:</label>
-                    <div class="switch">
-                      <input id="ethernetOnly" type="checkbox">
-                      <label title="Disable WiFi and use Ethernet only" class="slider" for="ethernetOnly"></label>
-                    </div>
-                  </div>
-                  <div class="input-group" id="network-group">
-                    <label for="ethernetWiFiBackup">WiFi Backup:</label>
-                    <div class="switch">
-                      <input id="ethernetWiFiBackup" type="checkbox">
-                      <label title="Enable WiFi as backup when Ethernet fails (stealth vs connectivity)" class="slider" for="ethernetWiFiBackup"></label>
-                    </div>
                   </div>
                   <br>
                   <div class="subheader">Clock settings</div>
