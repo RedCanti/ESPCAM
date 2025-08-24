@@ -778,19 +778,38 @@
             })
             // add the newly created table at placeholder
             divShowData.appendChild(table);
-            // After building table, apply netMode UI logic when in Access Settings (group 0)
+            // After building table, apply netMode UI logic for config group 0 (Network)
             if (cfgGroup === "0" || cfgGroup === 0) {
               const netSel = $('#netMode');
-              const wifiEls = $$('.wifi-only');
-              const applyNetVisibility = () => {
-                const isEth = (netSel && Number(netSel.value) === 1);
-                wifiEls.forEach(el => { if (el) el.style.display = isEth ? 'none' : ''; });
+              const hideKeys = [
+                'ST_SSID','ST_Pass','allowAP','AP_ip','AP_sn','AP_gw','AP_SSID','AP_Pass'
+              ];
+              const hideShowRows = (isEth) => {
+                hideKeys.forEach(k => {
+                  const el = $('#'+k);
+                  if (el && el.parentElement && el.parentElement.parentElement) {
+                    el.parentElement.parentElement.style.display = isEth ? 'none' : '';
+                  }
+                });
               };
-              if (netSel) {
-                netSel.addEventListener('change', applyNetVisibility);
-                // Delay to ensure select values populated before applying
-                setTimeout(applyNetVisibility, 0);
-              }
+              const moveNetModeFirst = () => {
+                const nm = $('#netMode');
+                if (nm) {
+                  const tr = nm.parentElement && nm.parentElement.parentElement ? nm.parentElement.parentElement : null;
+                  const tbl = divShowData.querySelector('table');
+                  if (tr && tbl && tbl.rows && tbl.rows.length > 1) {
+                    tbl.insertBefore(tr, tbl.rows[1]);
+                  }
+                }
+              };
+              const apply = () => {
+                const isEth = (netSel && Number(netSel.value) === 1);
+                hideShowRows(isEth);
+                moveNetModeFirst();
+              };
+              if (netSel) netSel.addEventListener('change', apply);
+              // Ensure we apply after the inputs are attached with values
+              setTimeout(apply, 0);
             }
           } else cfgGroupNow = -1;
         }
